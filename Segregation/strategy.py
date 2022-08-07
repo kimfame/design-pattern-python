@@ -45,14 +45,18 @@ class CardGameSupporter:
         for card in mixed_card_list:
             print(f'Card number : {card.number}')
 
+def main() -> None:
+    card_game_supporter = CardGameSupporter(FIFOOrderingStrategy())
+    #card_game_supporter = CardGameSupporter(FILOOrderingStrategy())
+    #card_game_supporter = CardGameSupporter(RandomOrderingStrategy())
 
-card_game_supporter = CardGameSupporter(FIFOOrderingStrategy())
-#card_game_supporter = CardGameSupporter(FILOOrderingStrategy())
-#card_game_supporter = CardGameSupporter(RandomOrderingStrategy())
+    card_game_supporter.add_card(1)
+    card_game_supporter.add_card(2)
+    card_game_supporter.add_card(3)
+    card_game_supporter.add_card(4)
 
-card_game_supporter.add_card(1)
-card_game_supporter.add_card(2)
-card_game_supporter.add_card(3)
-card_game_supporter.add_card(4)
+    card_game_supporter.offer_card_list()
 
-card_game_supporter.offer_card_list()
+
+if __name__ == "__main__":
+    main()

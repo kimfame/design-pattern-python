@@ -29,9 +29,10 @@ def random_ordering_strategy(card_list: List[Card]) -> List[Card]:
         random.shuffle(copied_list)
         return copied_list
 
+OrderingStrategyFunction = Callable[[List[Card]], List[Card]]
 
 class CardGameSupporter:
-    def __init__(self, ordering_strategy: Callable[[List[Card]], List[Card]]):
+    def __init__(self, ordering_strategy: OrderingStrategyFunction):
         self.card_list = []
         self.ordering_strategy = ordering_strategy
 
@@ -45,13 +46,19 @@ class CardGameSupporter:
             print(f'Card number : {card.number}')
 
 
-#card_game_supporter = CardGameSupporter(fifo_ordering_strategy)
-#card_game_supporter = CardGameSupporter(filo_ordering_strategy)
-card_game_supporter = CardGameSupporter(random_ordering_strategy)
 
-card_game_supporter.add_card(1)
-card_game_supporter.add_card(2)
-card_game_supporter.add_card(3)
-card_game_supporter.add_card(4)
+def main() -> None:
+    card_game_supporter = CardGameSupporter(fifo_ordering_strategy)
+    #card_game_supporter = CardGameSupporter(filo_ordering_strategy)
+    #card_game_supporter = CardGameSupporter(random_ordering_strategy)
 
-card_game_supporter.offer_card_list()
+    card_game_supporter.add_card(1)
+    card_game_supporter.add_card(2)
+    card_game_supporter.add_card(3)
+    card_game_supporter.add_card(4)
+
+    card_game_supporter.offer_card_list()
+
+
+if __name__ == "__main__":
+    main()
